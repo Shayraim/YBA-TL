@@ -115,7 +115,7 @@ function App() {
                         <h1 className="profile-title">YBA Tier List</h1>
                         <div className="disclaimer-box">
                             <p style={{margin: 0}}>
-                                <strong>Disclaimer:</strong> This tier list is <strong>not to be taken seriously</strong>. It changes every week based on every player's performance.
+                                <strong>Disclaimer:</strong> Tierlist placements are <strong>NOT final and are subject to change</strong> Tierlist updates are weekly. Players are viable to change in position / rank. They will only increase/decrease if they continue playing. But if they stop playing, then they cannot move down on the tierlist. They may only rise depending on how those still playing, play."
                             </p>
                         </div>
                     </div>
@@ -212,4 +212,5 @@ function App() {
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(<App />);
