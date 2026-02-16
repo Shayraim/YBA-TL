@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+
+:root {
+    --neon-blue: #00f3ff;
+    --neon-pink: #ff0055;
+    --bg-dark: #050505;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: white;
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Background Animé */
+.bg-fixed {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1;
+    background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #000000 100%);
+}
+.bg-grid {
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: rotateGrid 120s linear infinite;
+    opacity: 0.4;
+}
+@keyframes rotateGrid { 0% {transform: rotate(0deg);} 100% {transform: rotate(360deg);} }
+
+/* Hero Section */
+.hero-section {
+    padding: 40px 0 20px;
+    text-align: center;
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* NOUVEAU : Bloc de profil */
+.profile-header {
+    background: linear-gradient(135deg, #1a1a2e, #300030);
+    padding: 40px 20px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+.profile-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(0, 243, 255, 0.1), transparent);
+    z-index: 0;
+}
+.profile-content {
+    position: relative;
+    z-index: 1;
+}
+.profile-image-container {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+}
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    border: 3px solid var(--neon-blue);
+    box-shadow: 0 0 20px var(--neon-blue);
+}
+.photo-icon {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    background: #fff;
+    color: #000;
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 1.2rem;
+    border: 2px solid var(--neon-pink);
+}
+.profile-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px var(--neon-blue);
+}
+.profile-subtitle {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+.disclaimer-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+.disclaimer-box strong {
+    color: var(--neon-pink);
+}
+
+/* Hero Titles (Existing) */
+.hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(to right, #fff, #888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(255,255,255,0.2);
+    margin-bottom: 5px;
+}
+.hero-subtitle {
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    color: var(--neon-blue);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+/* --- ZONE DE CONTRÔLE --- */
+.controls-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.search-wrapper { flex-grow: 1; min-width: 250px; max-width: 400px; }
+.custom-search {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    width: 100%;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    backdrop-filter: blur(5px);
+}
+.custom-search:focus {
+    outline: none; border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3); background: rgba(0, 0, 0, 0.8);
+}
+.filter-container { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.filter-btn {
+    background: rgba(255, 255, 255, 0.03); border: 1px solid #444; color: #888;
+    padding: 6px 14px; border-radius: 20px; cursor: pointer;
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; transition: all 0.3s ease;
+    text-transform: uppercase; font-size: 0.85rem; display: flex; align-items: center; gap: 5px;
+}
+.filter-btn:hover { background: rgba(255, 255, 255, 0.1); color: white; transform: translateY(-2px); }
+.filter-btn.active-all { background: white; color: black; border-color: white; box-shadow: 0 0 10px rgba(255,255,255,0.4); }
+.filter-btn.active { color: white; text-shadow: 0 0 5px rgba(0,0,0,0.8); box-shadow: 0 0 10px currentColor; border-color: currentColor; background: rgba(255,255,255,0.1); }
+
+
+/* --- TIER ROWS --- */
+.tier-row {
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: stretch;
+    animation: slideUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+.tier-label {
+    font-family: 'Orbitron', sans-serif; 
+    font-weight: 700; 
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    width: 260px;
+    flex-shrink: 0;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8); 
+    padding: 15px;
+    line-height: 1.4;
+    box-sizing: border-box;
+}
+.tier-content {
+    padding: 12px; 
+    flex-grow: 1;
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 10px; 
+    align-items: center;
+    align-content: center;
+    border-left: 1px solid rgba(255,255,255,0.05);
+}
+
+/* --- PLAYER CARDS --- */
+.player-card {
+    padding: 8px 18px;
+    border-radius: 30px; 
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1;
+    letter-spacing: 0.5px;
+}
+
+/* --- GOD TIER (Rainbow Text Effect) --- */
+.god-tier {
+    background-color: rgba(20, 20, 20, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-image: linear-gradient(
+        90deg, 
+        #ff0000, #ff7300, #fffb00, #48ff00, 
+        #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000
+    );
+    background-size: 300% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: rainbowTextMove 4s linear infinite;
+}
+@keyframes rainbowTextMove { to { background-position: -300% center; } }
+
+.god-tier:hover {
+    transform: scale(1.15) translateY(-3px);
+    animation-duration: 2s;
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    z-index: 100;
+}
+
+/* --- NORMAL TIER --- */
+.normal-tier {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #aaa;
+}
+.normal-tier:hover {
+    background: white;
+    color: black;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px white;
+    z-index: 10;
+}
+
+/* --- CUSTOM TOOLTIP --- */
+.custom-tooltip {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.95);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 15px;
+    border: 1px solid var(--neon-blue);
+    font-size: 0.9rem;
+    font-family: 'Rajdhani', sans-serif;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+    max-width: 300px;
+    line-height: 1.4;
+}
+
+/* Footer */
+footer { margin-top: 60px; border-top: 1px solid #222; padding: 30px 0; background: #080808; }
+.credit-box { background: rgba(255,255,255,0.03); padding: 15px 25px; border-radius: 15px; border: 1px solid #333; display: inline-block; }
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+    .tier-row { flex-direction: column; align-items: center; }
+    .tier-label { width: 100%; min-height: 50px; font-size: 1rem; border-right: none; border-bottom: 2px solid; margin-bottom: 10px; }
+    .tier-content { border-left: none; justify-content: center; }
+    .controls-area { flex-direction: column; }
+    .search-wrapper { width: 100%; max-width: none; }
+}
